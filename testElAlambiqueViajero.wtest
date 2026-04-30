@@ -1,0 +1,40 @@
+import elAlambiqueViajero.*
+
+import vehiculos.*
+
+import paises.*
+
+describe "algo" { 
+    test "luke puede visitar París con alambique veloz y obtiene el recuerdo correcto"{ 
+        luke.viajarA(paris) 
+        assert.equals(1, luke.cantidadDeLugaresVisitados()) 
+        assert.equals("Llavero de la Torre Eiffel", luke.recuerdo()) 
+    } 
+    test "luke no puede visitar Buenos Aires con un vehículo lento"{ 
+        luke.cambiarVehiculo(superChatarraEspecial) 
+        luke.viajarA(buenosAires) 
+        assert.equals(1, luke.cantidadDeLugaresVisitados()) 
+    } 
+    test "luke visita Buenos Aires con vehículo rápido y obtiene el mate con yerba"{ 
+        luke.viajarA(buenosAires) 
+        assert.equals("Mate con yerba", luke.recuerdo()) 
+    } 
+    test "luke visita Las Vegas homenajeando París"{ 
+        lasVegas.ciudadAHomenajear(paris) 
+        luke.viajarA(lasVegas) 
+        assert.equals("Llavero de la Torre Eiffel", luke.recuerdo()) 
+    } 
+    test "luke puede visitar Tokio con cualquier vehículo"{ 
+        luke.cambiarVehiculo(superChatarraEspecial) 
+        luke.viajarA(tokio) 
+        assert.equals("Figura de Anime", luke.recuerdo()) 
+    } 
+    test "superConvertible se adapta según el terreno"{ 
+        luke.cambiarVehiculo(superConvertible) 
+        luke.viajarA(paris) 
+        assert.equals("auto", superConvertible.formaActual()) 
+        luke.viajarA(mendoza) 
+        assert.equals("lancha", superConvertible.formaActual()) 
+    } 
+}
+
